@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administracion</title>
+    <link rel="stylesheet" href="../css/administracion.css"> <!--Llama a la hoja de estilos-->
+</head>
+<body>
+    <header>
+        <section class="barraTop">
+            <a href="../index.html"><img src="../assets/img/logo2.png" alt="logo de la empresa"></a>
+        </section>
+    </header>
+    <main>
+        <form action="" class="formulario">
+            <h4>Complete los datos del cliente por favor</h4>
+            <div>
+                <label for="tarjeta">Crear Tarjeta</label>
+                <input type="checkbox" name="tarjeta" id="tarjeta">
+                <p></p>
+            </div>
+            <div>
+                <label for="password">PIN:</label>
+                <input type="password" name="password" id="password">
+                <p></p>
+            </div>
+            <div>
+                <label for="saldo">Saldo Inicial</label>
+                <input type="number" name="saldo" id="saldo">
+                <p></p>
+            </div>
+            <div>
+                <label for="username">Nombre de Usuario</label>
+                <input type="text" name="username" id="username">
+                <p></p>
+            </div>
+        
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre">
+                <p></p>
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label>
+                <input type="text" name="apellido" id="apellido"> 
+                <p></p>
+            <div>
+                <button type="submit">ENVIAR</button>
+                <button type="reset">LIMPIAR</button>
+            </div>         
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tarjeta</th>
+                    <th>Pin</th>
+                    <th>Saldo</th>
+                    <th>Username</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Si</td>
+                    <td>1234</td>
+                    <td>50000</td>
+                    <td>oalcalde</td>
+                    <td>Oscar</td>
+                    <td>Alcalde</td>
+                </tr>
+                <tr>
+                    <td>Si</td>
+                    <td>1234</td>
+                    <td>30000</td>
+                    <td>vlongo</td>
+                    <td>Valeria</td>
+                    <td>Longo</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+html{
+    height:600px;
+    width: 1000px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 600px;
+    width: 1000px;
+}
+
+main{
+    height: 600px;
+    width: 1000px;
+}
+
+.barraTop{
+    background-color: rgb(4, 15, 39);
+    height: 50px;
+    width: 1000px;
+}
+
+.barraTop img{
+    height: 50px;
+    width: 100px;
+}
+
+.formulario{
+    margin-left: 250px;
+    margin-top: 50px;
+}
+
+.ordenImgTarjeta{
+    display: flex;
+}
+
+.formularioImg1{
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+
+.formularioImg2{
+    border-radius: 100%;
+    width: 400px;
+    height: 250px;
+    margin-top: -25px;
+}
+
+.formulario h2{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: -20px;
+}
+
+form button{
+    margin-left: 10px;
+}
+
+form p{
+    margin-left: 200px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+table{
+    margin-top: 50px;
+    border: 1px;
+    border-style: solid;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    gap: 20px;
+}
