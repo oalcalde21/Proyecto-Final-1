@@ -1,6 +1,5 @@
-let saldoTotal = 10000
-let errorPin = 0
-const listaClientes = []
+let errorPin = 0;
+const listaClientes = [];
 
 class Cliente{
     constructor(tarjeta, pin, saldo, username, nombre, apellido){
@@ -13,23 +12,37 @@ class Cliente{
     }
 }
 
+let botonSubmit = document.querySelector('#enviar');
+botonSubmit.addEventListener("click", () => {
+    newCliente()
+    agregarListaClientes();
+    // inicio()
+});
 
 function newCliente(){
-    let tarjeta = confirm("Crear nueva tarjeta?");
+    // let tarjeta = confirm("Crear nueva tarjeta?");
+    let tarjeta = document.getElementById('tarjeta').checked;
     if (tarjeta){
-        let pin = prompt("Crear nuevo pin:");
+        console.log(tarjeta.checked);
+        let pin = document.getElementById('password').value;
         if (pin != ""){
-            let saldo = prompt("Ingrese su saldo inicial:");
+            let saldo = document.getElementById('saldo').value;
             if (saldo != ""){
-                let username = prompt("Ingrese su nombre de usuario") 
+                let username = document.getElementById('username').value; 
                 if (username != ""){
-                    let nombre = prompt("Ingrese su nombre");
+                    let nombre = document.getElementById('nombre').value;
                     if (nombre != ""){
-                        let apellido = prompt("Ingrese su apellido");
+                        let apellido = document.getElementById('apellido').value;
                         if (apellido != ""){
                             const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
-                            listaClientes.push(cliente);
-                            inicio()
+                                listaClientes.push(cliente);
+                                console.log(cliente);
+                                document.getElementById('tarjeta').checked = false;
+                                document.getElementById('password').value = "";
+                                document.getElementById('saldo').value = "";
+                                document.getElementById('username').value = "";
+                                document.getElementById('nombre').value = "";
+                                document.getElementById('apellido').value = "";
                             }else{
                                 alert("No ingreso su apellido, el proceso a finalizado")
                                 salir()
@@ -56,40 +69,36 @@ function newCliente(){
         salir();
     }
 }
-1
+
 
 inicio ();
 // Empieza el trabajo
 
-function inicio(){
-    console.clear();
-    console.log("------------------------")
-    console.log("1: Crear Cliente")
-    console.log("2- Cajero")
-    console.log("3- Salir")
-    console.log("------------------------")
-    let opcionElegida = prompt("Ingrese opcicion elegida");
-    if (opcionElegida == 1){
-        newCliente()
-    }else if(opcionElegida == 2){
-        cajero()
-    }else if (opcionElegida == 3){
-        salir()
-    }else if (opcionElegida != 1 && opcionElegida != 2) {
-        alert("Opcion elegida no valida, el programa va a finalizar");
-        salir()
-    }else{
-    salir()
+function agregarListaClientes(){
+    let html = "";
+    for (i=0; i<listaClientes.length; i++){
+        let cliente1 = listaClientes[i]
+        html += '<tr>';
+        html += '<td>' + cliente1.tarjeta + '</td>';
+        html += '<td>' + cliente1.pin + '</td>';
+        html += '<td>' + cliente1.saldo + '</th>';
+        html += '<td>' + cliente1.username + '</th>';
+        html += '<td>' + cliente1.nombre + '</th>';
+        html += '<td>' + cliente1.apellido + '</td>';
+        html += '</tr>';
     }
+    console.log(html);
+    document.querySelector('#tabla').innerHTML = html
+
+
+}
+
+
+function inicio(){
+    
 }
 
 function cajero() {
-    console.clear();
-    console.log("------------------------")
-    console.log("1: Retirar Dinero")
-    console.log("2- Consultar Saldo")
-    console.log("3- Salir")
-    console.log("------------------------")
     let username = prompt("Ingrese su nombre de usuario");
     if (username === "" || username == null){
         salir()
@@ -220,9 +229,11 @@ function consultarSaldo(username) {
 
 function salirCajero() {
     alert("Menu Principal");
+    agregarListaClientes()
     inicio()
 }
 
 function salir() {
     alert("Fin de la Operacion");
+    agregarListaClientes()
 }
