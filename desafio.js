@@ -1,6 +1,10 @@
 let errorPin = 0;
-const listaClientes = [];
-
+let listaGuardada = [];
+listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
+let listaClientes = listaGuardada;
+const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
+// let guardarClientes = JSON.stringify(listaClientes);
+agregarListaClientes();
 class Cliente{
     constructor(tarjeta, pin, saldo, username, nombre, apellido){
         this.tarjeta = tarjeta;
@@ -35,6 +39,10 @@ function newCliente(){
                         let apellido = document.getElementById('apellido').value;
                         if (apellido != ""){
                             const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
+                                let listaGuardada = [];
+                                listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
+                                // listaGuardada = JSON.parse(listaClientes);
+                                listaClientes = listaGuardada;
                                 listaClientes.push(cliente);
                                 console.log(cliente);
                                 document.getElementById('tarjeta').checked = false;
@@ -75,6 +83,8 @@ inicio ();
 // Empieza el trabajo
 
 function agregarListaClientes(){
+    const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
+    guardarClientes("listaClientes", JSON.stringify(listaClientes));
     let html = "";
     for (i=0; i<listaClientes.length; i++){
         let cliente1 = listaClientes[i]
