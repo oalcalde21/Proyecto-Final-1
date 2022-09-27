@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto1</title>
     <link rel="stylesheet" href="./css/style.css"> <!--Llama a la hoja de estilos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 <body>
     <header>
@@ -13,20 +15,21 @@
     </header>
     <main>
         <div class="titulo">
-            <a href="./micuenta.html"><h2>Mi Cuenta</h2></a>
+            <a href="./micuenta.html"><h2 id="heartBeat2" class="">Mi Cuenta</h2></a>
         </div>
         <div class="imagen">
-                <img src="./assets/img/logo.png" alt="">
+                <img class="animate__animated animate__swing animate__repeat-2" src="./assets/img/logo.png" alt="">
             </div>
         <section class="about">            
             <div class="subtitulo">
-                <a href="./administracion.html"><h2>Acceso de Administrador</h2></a>
+                <a href="./administracion.html"><h2 id="heartBeat" class="">Acceso de Administrador</h2></a>
             </div>
         </section>
     </main>
     <footer>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
     <script src="./desafio.js"></script>
 </body>
 </html>

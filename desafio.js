@@ -1,10 +1,10 @@
 let errorPin = 0;
 let listaGuardada = [];
-listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
+listaGuardada = JSON.parse(localStorage.getItem('listaClientes')) ?? [];
 let listaClientes = listaGuardada;
 const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
-// let guardarClientes = JSON.stringify(listaClientes);
 agregarListaClientes();
+let validarDatos = 0
 class Cliente{
     constructor(tarjeta, pin, saldo, username, nombre, apellido){
         this.tarjeta = tarjeta;
@@ -16,68 +16,88 @@ class Cliente{
     }
 }
 
+
 let botonSubmit = document.querySelector('#enviar');
+if (botonSubmit != null){ 
 botonSubmit.addEventListener("click", () => {
-    newCliente()
+    validarDatos=0
+    validarCliente()
     agregarListaClientes();
-    // inicio()
-});
-
-function newCliente(){
-    // let tarjeta = confirm("Crear nueva tarjeta?");
-    let tarjeta = document.getElementById('tarjeta').checked;
-    if (tarjeta){
-        console.log(tarjeta.checked);
-        let pin = document.getElementById('password').value;
-        if (pin != ""){
-            let saldo = document.getElementById('saldo').value;
-            if (saldo != ""){
-                let username = document.getElementById('username').value; 
-                if (username != ""){
-                    let nombre = document.getElementById('nombre').value;
-                    if (nombre != ""){
-                        let apellido = document.getElementById('apellido').value;
-                        if (apellido != ""){
-                            const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
-                                let listaGuardada = [];
-                                listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
-                                // listaGuardada = JSON.parse(listaClientes);
-                                listaClientes = listaGuardada;
-                                listaClientes.push(cliente);
-                                console.log(cliente);
-                                document.getElementById('tarjeta').checked = false;
-                                document.getElementById('password').value = "";
-                                document.getElementById('saldo').value = "";
-                                document.getElementById('username').value = "";
-                                document.getElementById('nombre').value = "";
-                                document.getElementById('apellido').value = "";
-                            }else{
-                                alert("No ingreso su apellido, el proceso a finalizado")
-                                salir()
-                            }
-                    }else {
-                        alert("No ingreso su nombre, el proceso a finalizado")
-                        salir()
-                    }
-                }else{
-                    alert("No ingreso su nombre de usuario, el proceso a finalizado")
-                    salir() 
-                } 
-            }else {
-                alert("El saldo inicial no puede ser o vacio, el proceso a finalizado")
-                salir() 
-            }
-        }else {
-            alert("No ha ingresado un numero de pin, el programa ha finalizado");
-            salir()
-        }
-
-    }else {
-        alert("Selecciono no crear una tarjeta, el programa finalizo");
-        salir();
+    spreadNombreDeClientes()
+    console.log(validarDatos);
+    if (validarDatos==1) {
+    Swal.fire({
+        title: 'Correcto',
+        icon: 'success',
+        text: 'El usuario fue creado correctamente'
+    })
+    }else{
+    let texto = "El usuario no fue creado, debe cumplir con estos requisitos: " + "\n" +  "-La tarjeta debe ser creada" + "\n" + "-El pin no puede ser vacio y debe ser numerico " + "\n" + "-El saldo no puede ser 0"  + "\n" + "-El username no puede ser vacio" + "\n" +  "-El nombre no puede ser vacio" + "\n" + "-El apellido no puede ser vacio";
+    Swal.fire({
+        title: 'Error',
+        icon: 'error',
+        text: texto,
+    })
     }
+})
 }
 
+let subtitulo = document.getElementById('heartBeat');
+    subtitulo.addEventListener("mouseenter", (e) => {
+    subtitulo.classList.add('animate__animated', 'animate__heartBeat');
+});
+
+let subtitulo2 = document.getElementById('heartBeat2');
+    subtitulo2.addEventListener("mouseenter", (e) => {
+    subtitulo2.classList.add('animate__animated', 'animate__heartBeat');
+});
+
+
+
+function validarCliente() {
+    let tarjeta = document.getElementById('tarjeta').checked;
+    let pin = document.getElementById('password').value;
+    let saldo = document.getElementById('saldo').value;
+    let username = document.getElementById('username').value; 
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let ret = 0
+
+    console.log(tarjeta);
+    console.log(pin);
+    console.log(saldo);
+    console.log(username);
+    console.log(nombre);
+    console.log(apellido);
+
+    if (tarjeta==false || pin=="" || saldo == 0 || saldo == "" || username== "" || nombre == "" || apellido == "") { 
+    Swal.fire({
+        title: 'Error',
+        icon: 'error',
+        text: `El usuario no fue creado, debe cumplir con estos requisitos: /n -La tarjeta debe ser creada /n -El pin no puede ser vacio y debe ser numerico /n -El saldo no puede ser 0 /n -El username no puede ser vacio /n -El nombre no puede ser vacio /n -El apellido no puede ser vacio`,
+    })
+    }else{
+        newCliente(tarjeta, pin, saldo, username, nombre, apellido);
+        validarDatos=1;
+    }
+
+}
+
+function newCliente(tarjeta, pin, saldo, username, nombre, apellido){
+    
+    const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
+    let listaGuardada = [];
+    listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
+    listaClientes = listaGuardada;
+    listaClientes.push(cliente);
+    document.getElementById('tarjeta').checked = false;
+    document.getElementById('password').value = "";
+    document.getElementById('saldo').value = "";
+    document.getElementById('username').value = "";
+    document.getElementById('nombre').value = "";
+    document.getElementById('apellido').value = "";
+                            
+}
 
 inicio ();
 // Empieza el trabajo
@@ -88,19 +108,38 @@ function agregarListaClientes(){
     let html = "";
     for (i=0; i<listaClientes.length; i++){
         let cliente1 = listaClientes[i]
+        //desestructurar cliente
+        const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
         html += '<tr>';
-        html += '<td>' + cliente1.tarjeta + '</td>';
-        html += '<td>' + cliente1.pin + '</td>';
-        html += '<td>' + cliente1.saldo + '</th>';
-        html += '<td>' + cliente1.username + '</th>';
-        html += '<td>' + cliente1.nombre + '</th>';
-        html += '<td>' + cliente1.apellido + '</td>';
+        html += '<td>' + tarjeta + '</td>';
+        html += '<td>' + pin + '</td>';
+        html += '<td>' + saldo + '</th>';
+        html += '<td>' + username + '</th>';
+        html += '<td>' + nombre + '</th>';
+        html += '<td>' + apellido + '</td>';
         html += '</tr>';
     }
-    console.log(html);
-    document.querySelector('#tabla').innerHTML = html
+    let tabla = document.querySelector('#tabla')
+    tabla ?? console.log("tabla es null")
+    if (tabla != null){
+    tabla.innerHTML = html;
+    }
+
+}
 
 
+//Spread
+function spreadNombreDeClientes(){
+    const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
+    guardarClientes("listaClientes", JSON.stringify(listaClientes));
+    const listaDeNombres = []
+    for (i=0; i<listaClientes.length; i++){
+        let cliente1 = listaClientes[i]
+        //desestructurar cliente
+        const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
+        listaDeNombres.push(nombre)
+    }
+    console.log(...listaDeNombres)
 }
 
 
@@ -120,12 +159,15 @@ function cajero() {
 // True ingresa y pide pin, false sale del programa y se reinicia
 
 
-function validarUsername (username){
+function validarUsername (username1){
     let cliente1 ={}
     for (let i =0; i < listaClientes.length; i++){
         cliente1 = listaClientes[i];
-        console.log(cliente1.username)
-        if (cliente1.username == username){
+        //Desestructuracion de Cliente1
+        const {tarjeta, pin, saldo, username, nombre,apellido} = cliente1
+        console.log(username)
+        //Se usa la variable username del cliente1 para validar si es igual al username recibido al principio de la funcion, antes era validado como cliente1.username
+        if (username == username1){
             alert("El usuario es correcto")
             console.table(listaClientes)
             let pin = prompt("Ingrese su Pin");
