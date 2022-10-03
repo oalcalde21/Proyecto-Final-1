@@ -5,6 +5,7 @@ let listaClientes = listaGuardada;
 const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
 agregarListaClientes();
 let validarDatos = 0
+let validarNomUsuario = 0
 class Cliente{
     constructor(tarjeta, pin, saldo, username, nombre, apellido){
         this.tarjeta = tarjeta;
@@ -24,44 +25,39 @@ botonSubmit.addEventListener("click", () => {
     validarCliente()
     agregarListaClientes();
     spreadNombreDeClientes()
-    console.log(validarDatos);
-    if (validarDatos==1) {
-    Swal.fire({
-        title: 'Correcto',
-        icon: 'success',
-        text: 'El usuario fue creado correctamente'
-    })
-    }else{
-    let texto = "El usuario no fue creado, debe cumplir con estos requisitos: " + "\n" +  "-La tarjeta debe ser creada" + "\n" + "-El pin no puede ser vacio y debe ser numerico " + "\n" + "-El saldo no puede ser 0"  + "\n" + "-El username no puede ser vacio" + "\n" +  "-El nombre no puede ser vacio" + "\n" + "-El apellido no puede ser vacio";
-    Swal.fire({
-        title: 'Error',
-        icon: 'error',
-        text: texto,
-    })
+    if (validarNomUsuario == 0){
+        if (validarDatos==1) {
+        Swal.fire({
+            title: 'Correcto',
+            icon: 'success',
+            text: 'El usuario fue creado correctamente'
+        })
+        }else{
+        let texto = "El usuario no fue creado, debe cumplir con estos requisitos: " + "\n" +  "-La tarjeta debe ser creada" + "\n" + "-El pin no puede ser vacio y debe ser numerico " + "\n" + "-El saldo no puede ser 0"  + "\n" + "-El username no puede ser vacio" + "\n" +  "-El nombre no puede ser vacio" + "\n" + "-El apellido no puede ser vacio";
+        Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: texto,
+        })
+        }
+    } else{
+        Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: 'El nombre de usuario ya existe, por favor elija otro',
+        }); 
     }
-})
+});
 }
-
-let subtitulo = document.getElementById('heartBeat');
-    subtitulo.addEventListener("mouseenter", (e) => {
-    subtitulo.classList.add('animate__animated', 'animate__heartBeat');
-});
-
-let subtitulo2 = document.getElementById('heartBeat2');
-    subtitulo2.addEventListener("mouseenter", (e) => {
-    subtitulo2.classList.add('animate__animated', 'animate__heartBeat');
-});
-
 
 
 function validarCliente() {
-    let tarjeta = document.getElementById('tarjeta').checked;
+    let tarjeta = document.getElementById('myToggle').checked;
     let pin = document.getElementById('password').value;
     let saldo = document.getElementById('saldo').value;
     let username = document.getElementById('username').value; 
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
-    let ret = 0
 
     console.log(tarjeta);
     console.log(pin);
@@ -70,37 +66,53 @@ function validarCliente() {
     console.log(nombre);
     console.log(apellido);
 
-    if (tarjeta==false || pin=="" || saldo == 0 || saldo == "" || username== "" || nombre == "" || apellido == "") { 
-    Swal.fire({
-        title: 'Error',
-        icon: 'error',
-        text: `El usuario no fue creado, debe cumplir con estos requisitos: /n -La tarjeta debe ser creada /n -El pin no puede ser vacio y debe ser numerico /n -El saldo no puede ser 0 /n -El username no puede ser vacio /n -El nombre no puede ser vacio /n -El apellido no puede ser vacio`,
-    })
-    }else{
-        newCliente(tarjeta, pin, saldo, username, nombre, apellido);
-        validarDatos=1;
+    validarNombreUsuario(username)
+    if (validarNomUsuario==1){
+        Swal.fire({
+            title: 'Error',
+            icon: 'error',
+            text: 'El nombre de usuario ya existe, por favor elija otro',
+        });
+    }else if (validarNomUsuario==0){
+        if (tarjeta==false || pin=="" || saldo == 0 || saldo == "" || username== "" || nombre == "" || apellido == "") { 
+            validarDatos = 0
+            }else{
+                newCliente(tarjeta, pin, saldo, username, nombre, apellido);
+                validarDatos=1;
+            }
     }
-
 }
 
 function newCliente(tarjeta, pin, saldo, username, nombre, apellido){
-    
-    const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
-    let listaGuardada = [];
-    listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
-    listaClientes = listaGuardada;
-    listaClientes.push(cliente);
-    document.getElementById('tarjeta').checked = false;
-    document.getElementById('password').value = "";
-    document.getElementById('saldo').value = "";
-    document.getElementById('username').value = "";
-    document.getElementById('nombre').value = "";
-    document.getElementById('apellido').value = "";
-                            
+        const cliente = new Cliente(tarjeta, pin, saldo, username, nombre, apellido);
+        let listaGuardada = [];
+        listaGuardada = JSON.parse(localStorage.getItem('listaClientes'));
+        listaClientes = listaGuardada;
+        listaClientes.push(cliente);
+        document.getElementById('myToggle').checked = false;
+        document.getElementById('password').value = "";
+        document.getElementById('saldo').value = "";
+        document.getElementById('username').value = "";
+        document.getElementById('nombre').value = "";
+        document.getElementById('apellido').value = "";                       
 }
 
-inicio ();
-// Empieza el trabajo
+function validarNombreUsuario(username1){
+    validarNomUsuario = 0
+    console.log(validarNomUsuario);
+    for (i=0; i<listaClientes.length; i++){
+        let cliente1 = listaClientes[i]
+        //desestructurar cliente
+        console.log(cliente1)
+        const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
+        if (username1 == username) {
+            console.log(username);
+            console.log(username1);
+            validarNomUsuario=1;
+            break;
+        }
+    }
+}
 
 function agregarListaClientes(){
     const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
@@ -142,10 +154,6 @@ function spreadNombreDeClientes(){
     console.log(...listaDeNombres)
 }
 
-
-function inicio(){
-    
-}
 
 function cajero() {
     let username = prompt("Ingrese su nombre de usuario");
