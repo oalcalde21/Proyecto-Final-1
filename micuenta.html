@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/micuenta.css"> <!--Llama a la hoja de estilos-->
 </head>
 <body>
@@ -26,10 +27,10 @@
             <div>
                 <p>Movimientos de la cuenta</p>
             </div>
-            <div>
-                <button type="button">Sacar Dinero</button>
-                <button type="button">Transferir Dinero a otra Cuenta</button>
-                <button type="button">Vaciar Cuenta y borrar usuario</button>
+            <div class="botones">
+                <button class="btn btn-primary" type="button">Sacar Dinero</button>
+                <button class="btn btn-primary" type="button">Transferir Dinero a otra Cuenta</button>
+                <button class="btn btn-primary" type="button">Vaciar Cuenta y borrar usuario</button>
             </div> 
 
             <div class="container">
@@ -38,8 +39,8 @@
                         <img src="./assets/img/bitcoin.png" alt="Logo de Bitcoin">
                     </div>
                     <div>
-                        <h3>$<span id="bitcoin"></span></h3>
-                        <h3>Bitcoin</h3>
+                        <h3 class="fs-5">$<span class="fs-5" id="bitcoin"></span></h3>
+                        <h3 class="fs-5">Bitcoin</h3>
                     </div>
                 </div>
                 <div class="coin-price">
@@ -47,8 +48,8 @@
                         <img src="./assets/img/litecoin.png" alt="Logo de Bitcoin">
                     </div>
                     <div>
-                        <h3>$<span id="litecoin"></span></h3>
-                        <h3>Litecoin</h3>
+                        <h3 class="fs-5">$<span class="fs-5" id="litecoin"></span></h3>
+                        <h3 class="fs-5">Litecoin</h3>
                     </div>
                 </div>
                 <div class="coin-price">
@@ -56,8 +57,8 @@
                         <img src="./assets/img/ethereum.png" alt="Logo de Bitcoin">
                     </div>
                     <div>
-                        <h3>$<span id="ethereum"></span></h3>
-                        <h3>Ethereum</h3>
+                        <h3 class="fs-5">$<span class="fs-5" id="ethereum"></span></h3>
+                        <h3 class="fs-5">Ethereum</h3>
                     </div>
                 </div>
                 <div class="coin-price">
@@ -65,11 +66,14 @@
                         <img src="./assets/img/dogecoin.jpg" alt="Logo de Bitcoin">
                     </div>
                     <div>
-                        <h3>$<span id="dogecoin"></span></h3>
-                        <h3>Dogecoin</h3>
+                        <h3 class="fs-5">$<span class="fs-5" id="dogecoin"></span></h3>
+                        <h3 class="fs-5">Dogecoin</h3>
                     </div>
                 </div>
             </div>
+            <div class="botones">
+                <button class="btn btn-primary alinearCompra" type="button" onclick="location.href='https://www.binance.com/'">Comprar Criptomonedas</button>
+            </div> 
 
             <table>
                 <thead>
