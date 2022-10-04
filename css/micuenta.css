@@ -56,6 +56,7 @@ main{
 
 form button{
     margin-left: 10px;
+    margin-bottom: 20px;
 }
 
 form p{
@@ -72,4 +73,40 @@ table{
     justify-items: center;
     text-align: center;
     gap: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px 20px;
+    border-radius: 5px;
+    margin-left: -250px;
+}
+
+.container .coin-price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #CCC;
+    margin: 7px;
+}
+
+.container .coin-price .logo{
+    width: 70px;
+    margin-right: 10px;
+}
+
+.container .coin-price .logo img{
+    width: 100%;
+}
+
+.container .coin-price .logo div{
+    display: block;
+}
+
+.container .coin-price .logo div h1{
+    font-size: 20px;
 }
