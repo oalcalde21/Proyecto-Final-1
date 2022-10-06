@@ -17,22 +17,19 @@
 
     <main>
         <form action="" class="formulario">
-            <div class="ordenImgTarjeta">
-                <img class="formularioImg1" src="./assets/img/foto.jpeg" alt="Foto de Perfil">
-                <img class="formularioImg2" src="./assets/img/card.png" alt="Tarjeta de Credito">
-            </div>
-            <div>
-                <h2>Oscar Alcalde</h2>
-            </div>
-            <div>
-                <p>Movimientos de la cuenta</p>
+            <div id="usuario" class="ordenarNombre">
+
             </div>
             <div class="botones">
-                <button class="btn btn-primary" type="button">Sacar Dinero</button>
-                <button class="btn btn-primary" type="button">Transferir Dinero a otra Cuenta</button>
-                <button class="btn btn-primary" type="button">Vaciar Cuenta y borrar usuario</button>
+                <button id="sacarDinero" class="btn btn-primary ml-5" type="button">Sacar Dinero</button>
+                <button id="consultar" class="btn btn-primary" type="button">Consultar Saldo</button>
+                <button id="borrar" class="btn btn-primary" type="button">Vaciar Cuenta y borrar usuario</button>
             </div> 
-
+            <div id="oculto" class="oculto">
+                <label for="saldo">Ingrese el Monto a Retirar</label>
+                <input type="number" name="saldo" id="saldo" autocomplete="on">
+                <button id="retirar" class="btn btn-primary" type="button">Retirar</button>
+            </div>
             <div class="container">
                 <div class="coin-price">
                     <div class="logo">
@@ -71,43 +68,16 @@
                     </div>
                 </div>
             </div>
-            <div class="botones">
+            <div class="">
                 <button class="btn btn-primary alinearCompra" type="button" onclick="location.href='https://www.binance.com/'">Comprar Criptomonedas</button>
             </div> 
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Tarjeta (ultimos 4)</th>
-                        <th>Tipo de transaccion</th>
-                        <th>Cantidad</th>
-                        <th>Saldo en la cuenta</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>20/8/2022</td>
-                        <td>3456</td>
-                        <td>Retiro</td>
-                        <td>20000</td>
-                        <td>30000</td>
-                    </tr>
-                    <tr>
-                        <td>25/8/2022</td>
-                        <td>3456</td>
-                        <td>Transferencia</td>
-                        <td>5000</td>
-                        <td>25000</td>
-                    </tr>
-                </tbody>
-            </table>        
         </form>
     </main>
 
     <footer>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="./micuenta.js"></script>
 </body>

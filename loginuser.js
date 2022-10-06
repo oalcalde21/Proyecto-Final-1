@@ -4,6 +4,7 @@ let listaClientes1 = listaGuardada1;
 
 let btn = document.querySelector('#login');
 let frm = document.querySelector('#formu');
+let titulo = ""
 console.log(listaClientes1);
 btn.addEventListener('click', () => {
     let username2 = document.getElementById('username2').value; 
@@ -13,6 +14,10 @@ btn.addEventListener('click', () => {
         console.log(cliente1)
         const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
         if (username == username2 && pin == pin2){
+            titulo = username
+            console.log(titulo)
+            const guardarUsuario = (clave, valor) => {localStorage.setItem(clave, valor)};
+            guardarUsuario("titulo", JSON.stringify(titulo));
             Swal.fire({
                 confirmButtonText: 'OK',
                 title: 'Correcto',
@@ -34,3 +39,6 @@ btn.addEventListener('click', () => {
     }
     
 })
+
+
+
