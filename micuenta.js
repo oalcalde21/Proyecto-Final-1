@@ -68,6 +68,7 @@ function retirarDinero(titulo) {
                     });
                 } else {
                     cliente1.saldo -= monto;
+                    document.getElementById('saldo').value = ""
                     document.getElementById('oculto').style.display = "none";
                     const guardarClientes = (clave, valor) => {localStorage.setItem(clave, valor)};
                     guardarClientes("listaClientes", JSON.stringify(listaClientes1));
