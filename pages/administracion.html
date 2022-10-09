@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/administracion.css"> <!--Llama a la hoja de estilos-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> <!--CDN de Bootstrap-->
+    <link rel="stylesheet" href="../css/administracion.css"> <!--Llama a la hoja de estilos-->
 <body>
     <header>
         <section class="barraTop">
@@ -14,6 +14,7 @@
         </section>
     </header>
     <main>
+        <!--Formulario para creacion de nuevos clientes-->
         <form action="" class="formulario">
             <h4>Complete los datos del cliente por favor</h4>
             <div class="formulario">
@@ -57,6 +58,7 @@
 
         <table>
             <tr>
+                <!--Se agregan espacios en blanco para la separacion de titulos en la tabla vacia-->
                 <th scope="col">Tarjeta&nbsp&nbsp</th>
                 <th scope="col">Pin&nbsp&nbsp</th>
                 <th scope="col">Saldo&nbsp&nbsp</th>
@@ -74,8 +76,9 @@
     </main>
     <footer>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> <!--CDN de Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script> <!--CDN de SweetAlert-->
+    <!--Llamado a Scripts-->
     <script src="../scripts/desafio.js"></script>
 </body>
 </html>

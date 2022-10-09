@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> <!--CDN de Bootstrap-->
     <link rel="stylesheet" href="../css/micuenta.css"> <!--Llama a la hoja de estilos-->
 </head>
 <body>
@@ -17,9 +17,11 @@
 
     <main>
         <form action="" class="formulario">
+            <!--DIV donde va a agregarse el Nombre y Apellido luego del Log In-->
             <div id="usuario" class="ordenarNombre">
 
             </div>
+            <!--Botones de trabajao con la cuenta mas Label Oculto que se muestra al hacer clic en el boton correspondiente-->
             <div class="botones">
                 <button id="sacarDinero" class="btn btn-primary ml-5" type="button">Sacar Dinero</button>
                 <button id="consultar" class="btn btn-primary" type="button">Consultar Saldo</button>
@@ -30,6 +32,7 @@
                 <input type="number" name="saldo" id="saldo" autocomplete="on">
                 <button id="retirar" class="btn btn-primary" type="button">Retirar</button>
             </div>
+            <!--Contenedor que muestra los precios de Criptomonedas en vivo desde API y Boton que redirecciona a web de compra de criptomonedas-->
             <div class="container">
                 <div class="coin-price">
                     <div class="logo">
@@ -77,8 +80,9 @@
     <footer>
 
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script> <!--CDN de SweetAlert-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> <!--Codigo agregado a pedido de la web de la API-->
+    <!--Llamado a Scripts-->
     <script src="../scripts/micuenta.js"></script>
 </body>
 </html>

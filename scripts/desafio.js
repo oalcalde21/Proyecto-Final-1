@@ -1,4 +1,3 @@
-let errorPin = 0;
 let listaGuardada = [];
 listaGuardada = JSON.parse(localStorage.getItem('listaClientes')) ?? [];
 let listaClientes = listaGuardada;
