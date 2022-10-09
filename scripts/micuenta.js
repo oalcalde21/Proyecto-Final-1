@@ -21,7 +21,6 @@ fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Clitecoin%2Cet
     });
 
 titulo = JSON.parse(localStorage.getItem('titulo'))    
-console.log(titulo);
 
 cargarDatosCliente(titulo)
 
@@ -39,7 +38,6 @@ function cargarDatosCliente(titulo){
             html1 += '</h2>';
             if (titulo != null){
             titulo1.innerHTML = html1;
-            console.log(html1);
     }
             break;
         }
@@ -49,10 +47,8 @@ function cargarDatosCliente(titulo){
 function firstUpperCase (name, lastname){
     str1 = name;
     str2 = str1.charAt(0).toUpperCase() + str1.slice(1);
-    console.log(str2);
     stra = lastname;
     strb = stra.charAt(0).toUpperCase() + stra.slice(1);
-    console.log(strb);
 }
 
 function retirarDinero(titulo) {

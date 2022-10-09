@@ -59,13 +59,6 @@ function validarCliente() {
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
 
-    console.log(tarjeta);
-    console.log(pin);
-    console.log(saldo);
-    console.log(username);
-    console.log(nombre);
-    console.log(apellido);
-
     validarNombreUsuario(username)
     if (validarNomUsuario==1){
         Swal.fire({
@@ -99,15 +92,11 @@ function newCliente(tarjeta, pin, saldo, username, nombre, apellido){
 
 function validarNombreUsuario(username1){
     validarNomUsuario = 0
-    console.log(validarNomUsuario);
     for (i=0; i<listaClientes.length; i++){
         let cliente1 = listaClientes[i]
         //desestructurar cliente
-        console.log(cliente1)
         const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
         if (username1 == username) {
-            console.log(username);
-            console.log(username1);
             validarNomUsuario=1;
             break;
         }
@@ -154,28 +143,7 @@ function spreadNombreDeClientes(){
     console.log(...listaDeNombres)
 }
 
-function consultarSaldo(username) {
-    let cliente1 = {}
-    for (let i =0; i < listaClientes.length; i++){
-    cliente1 = listaClientes[i];
-        if (cliente1.username == username){
-            alert("Su saldo es: $" + cliente1.saldo)
-            seleccionarOperacion(username)
-        }else{
-            seleccionarOperacion(username)
-        }
-    }
-    
-    seleccionarOperacion(username)
-}
 
-function salirCajero() {
-    alert("Menu Principal");
-    agregarListaClientes()
-    inicio()
-}
 
-function salir() {
-    alert("Fin de la Operacion");
-    agregarListaClientes()
-}
+
+

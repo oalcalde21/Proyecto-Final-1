@@ -11,11 +11,9 @@ btn.addEventListener('click', () => {
     let pin2 = document.getElementById('pin2').value;
     for (i=0; i<listaClientes1.length; i++){
         let cliente1 = listaClientes1[i]
-        console.log(cliente1)
         const {tarjeta, pin, saldo, username, nombre, apellido} = cliente1;
         if (username == username2 && pin == pin2){
             titulo = username
-            console.log(titulo)
             const guardarUsuario = (clave, valor) => {localStorage.setItem(clave, valor)};
             guardarUsuario("titulo", JSON.stringify(titulo));
             Swal.fire({
